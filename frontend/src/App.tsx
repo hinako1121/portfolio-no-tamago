@@ -32,21 +32,25 @@ function App() {
       <CssBaseline />
       <Router>
         <Container 
-          maxWidth="lg" 
+          maxWidth={false}
+          disableGutters
           sx={{ 
             minHeight: '100vh',
-            py: 4,
+            width: '100%',
             display: 'flex',
-            flexDirection: 'column'
+            flexDirection: 'column',
+            bgcolor: 'background.default',
+            m: 0,
+            p: 0
           }}
         >
           <Routes>
             <Route path="/login" element={<LoginScreen onLogin={() => {}} onNavigateToSignup={() => {}} />} />
             <Route path="/signup" element={<SignupScreen />} />
-            <Route path="/apps" element={<AppListScreen />} />
-            <Route path="/apps/:id" element={<AppDetailScreen />} />
-            <Route path="/apps/new" element={<PostAppScreen />} />
-            <Route path="/profile/edit" element={<ProfileEditScreen />} />
+            <Route path="/apps" element={<AppListScreen onNavigate={handleNavigate} />} />
+            <Route path="/apps/:id" element={<AppDetailScreen onNavigate={handleNavigate} />} />
+            <Route path="/apps/new" element={<PostAppScreen onNavigate={handleNavigate} />} />
+            <Route path="/profile/edit" element={<ProfileEditScreen onNavigate={handleNavigate} />} />
             <Route path="/dashboard" element={<DashboardScreen onNavigate={handleNavigate} />} />
             <Route path="/" element={<DashboardScreen onNavigate={handleNavigate} />} />
           </Routes>
